@@ -50,6 +50,7 @@
     <Compile Include="FilePropertiesEditor.cs" />
     <Compile Include="GetDrivers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterAction.cs" />
     <Compile Include="RunAsHexRawData.cs" />
     <Compile Include="RunPwshCode.cs" />
     <Compile Include="StringConverter.cs" />

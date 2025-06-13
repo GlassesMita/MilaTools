@@ -1,9 +1,25 @@
-﻿public enum FileProperties
+﻿/// <summary>
+/// File properties for use with FileAction.
+/// </summary>
+public enum FileProperties
 {
     Hidden,
     System,
     Archive,
     Readonly
+}
+
+/// <summary>
+/// Registry value types for use with RegisterAction.
+/// </summary>
+public enum RegistryValueType
+{
+    String,
+    ExpandString,
+    DWord,
+    QWord,
+    Binary,
+    MultiString
 }
 
 /*
