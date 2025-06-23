@@ -1,5 +1,9 @@
 # MilaTools
 
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![Visual Studio](https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+
 ## 项目简介
 
 MilaTools / 米拉的工具集 是一个基于 .NET Framework 4.8 的多功能工具库，提供文件属性管理、驱动器信息获取、路径转换、注册表操作、可执行文件识别、时间戳处理、PowerShell 脚本运行等常用系统操作能力，适用于 Windows 平台的开发和自动化场景。
@@ -32,6 +36,17 @@ MilaTools / 米拉的工具集 是一个基于 .NET Framework 4.8 的多功能�
 
 - **可执行文件十六进制处理**
   - 通过 `RunAsHexRawData` 类，将可执行文件转换为十六进制 rawData，或从 rawData 执行可执行文件。
+
+---
+
+## 从最新的源代码构建
+
+1. 拉取本仓库
+  ```bash
+  git clone https://github.com/GlassesMita/MilaTools.git
+  ```
+2. 使用 Visual Studio 2022 进行构建
+3. 打开项目后点击生成
 
 ---
 
@@ -94,6 +109,11 @@ MilaTools / 米拉的工具集 是一个基于 .NET Framework 4.8 的多功能�
      pwsh.RunWithPwsh5("Get-Service");
      ```
 
+9. **示例：字符串的转换**
+    ```csharp
+    string Str = @"一一四五一四"
+    StringToBase64(UrlEncode(Str));
+    ```
 ---
 
 ## TODOLIST
@@ -103,6 +123,8 @@ MilaTools / 米拉的工具集 是一个基于 .NET Framework 4.8 的多功能�
 - [ ] 注册表操作支持批量导入/导出
 - [ ] 增加单元测试覆盖率
 - [ ] 完善英文文档和 API 注释
+- [ ] 添加更多的字符串转换功能
+- [x] 吃一口铁托的糖果曲奇巧克力
 
 ---
 
