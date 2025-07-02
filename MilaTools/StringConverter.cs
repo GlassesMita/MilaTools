@@ -12,6 +12,7 @@ namespace MilaTools
     /// <summary>
     /// Methods List:
     /// </summary>
+    /// GetStringLength(string str)
     /// HexToString(string str)
     /// StringToHex(string str)
     /// Base64ToString(string str)
@@ -33,10 +34,26 @@ namespace MilaTools
     /// StringToRot18(string str)
     /// Rot18ToString(string str)
     /// GetStringMD5(string str)
+    /// CaesarEncode(string str, int i)
+    /// CaesarDecode(string str, int i)
+    /// MultiMD5Encrypt(string str, int i)
     /// </detail>
 
     public class StringConverter
     {
+        public void GetStringLength(string str)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                throw new ArgumentNullException("Input string is null or empty");
+            }
+            else
+            {
+                string result = str.Length.ToString();
+                _ = result;
+            }
+        }
+
         public void HexToString(string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -142,6 +159,9 @@ namespace MilaTools
             }
         }
 
+        // Attention:
+        // This method may make the result string very longer than the original string
+        // and may not be suitable for all use cases.
         public void StringToBinary(string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -206,6 +226,7 @@ namespace MilaTools
             }
             catch (Exception)
             {
+
                 throw;
             }
         }
@@ -387,6 +408,9 @@ namespace MilaTools
             }
         }
 
+        // WARNING:
+        // MD5 USING HASH TO ENCRYPT STRINGS SO IT IS NOT REVERSIBLE, ESPECIALLY WHEN USED MULTIPLE TIMES.
+        // USE AT YOUR OWN RISK.
         public void GetStringMD5(string str)
         {
             if (string.IsNullOrEmpty(str))
@@ -404,6 +428,89 @@ namespace MilaTools
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public void CaesarEncode(string str, int i)
+        {
+            if (string.IsNullOrEmpty(str) && i < 0)
+            {
+                throw new ArgumentException("Input string is null or empty or shift value is negative.");
+            }
+            else
+            {
+                try
+                {
+                    var caesar = new StringBuilder();
+                    foreach (char c in str)
+                    {
+                        if (char.IsLetter(c))
+                        {
+                            char offset = char.IsUpper(c) ? 'A' : 'a';
+                            caesar.Append((char)((((c + i - offset) % 26) + offset)));
+                        }
+                        else
+                        {
+                            caesar.Append(c);
+                        }
+                    }
+                    _ = caesar.ToString();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public void CaesarDecode(string str, int i)
+        {
+            if (string.IsNullOrEmpty(str) && i < 0)
+            {
+                throw new ArgumentException("Input string is null or empty or shift value is negative.");
+            }
+            else
+            {
+                try
+                {
+                    CaesarEncode(str, -i);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        // WARNING:
+        // MD5 USING HASH TO ENCRYPT STRINGS SO IT IS NOT REVERSIBLE, ESPECIALLY WHEN USED MULTIPLE TIMES.
+        // USE AT YOUR OWN RISK.
+        public void MultiMD5Encrypt(string str, int i)
+        {
+            if (string.IsNullOrEmpty(str) || i < 1)
+            {
+                throw new ArgumentException("Input string is null or empty or iteration count is less than 1.");
+            }
+            else
+            {
+                try
+                {
+                    string result = str;
+                    for (int j = 0; j < i; j++)
+                    {
+                        using (var md5 = System.Security.Cryptography.MD5.Create())
+                        {
+                            byte[] inputBytes = Encoding.UTF8.GetBytes(result);
+                            byte[] hashBytes = md5.ComputeHash(inputBytes);
+                            result = BitConverter.ToString(hashBytes).Replace("-", "").ToLowerInvariant();
+                        }
+                    }
+                    _ = result;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
         }
     }
