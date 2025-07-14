@@ -51,6 +51,7 @@
     <Compile Include="ExecutableFileIdentification.cs" />
     <Compile Include="FilePropertiesEditor.cs" />
     <Compile Include="GetDrivers.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="OSInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterAction.cs" />

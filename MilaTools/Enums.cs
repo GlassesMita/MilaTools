@@ -35,6 +35,19 @@ public enum TaskbarProgressState
     Paused = 0x8
 }
 
+/// <summary>
+/// Logger levels for use with Logger.Log() .
+/// </summary>
+public enum LogLevel
+{
+    Debug = 0,
+    Info = 1,
+    Warning = 2,
+    Error = 3,
+    Fatal = 4
+}
+
+
 /*
                      ,----------------,              ,---------,
                 ,-----------------------,          ,"        ,"|
