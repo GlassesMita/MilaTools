@@ -12,7 +12,7 @@ namespace MilaTools
         /// <summary>
         /// Gets the OS major version as a string.
         /// </summary>
-        public string GetOSMajorVersion()
+        public static string GetOSMajorVersion()
         {
             return Environment.OSVersion.Version.Major.ToString();
         }
@@ -20,7 +20,7 @@ namespace MilaTools
         /// <summary>
         /// Gets the OS minor version as a string.
         /// </summary>
-        public string GetOSMinorVersion()
+        public static string GetOSMinorVersion()
         {
             return Environment.OSVersion.Version.Minor.ToString();
         }
@@ -28,7 +28,7 @@ namespace MilaTools
         /// <summary>
         /// Gets the OS build version as a string.
         /// </summary>
-        public string GetOSBuildVersion()
+        public static string GetOSBuildVersion()
         {
             return Environment.OSVersion.Version.Build.ToString();
         }
@@ -36,7 +36,7 @@ namespace MilaTools
         /// <summary>
         /// Gets the OS version as a string in the format "Major.Minor.Build.Revision".
         /// </summary>
-        public string GetOSVersion()
+        public static string GetOSVersion()
         {
             var v = Environment.OSVersion.Version;
             return $"{v.Major}.{v.Minor}.{v.Build}.{v.Revision}";
@@ -45,7 +45,7 @@ namespace MilaTools
         /// <summary>
         /// Gets the OS platform name (e.g., "Windows").
         /// </summary>
-        public string GetOSPlatformName()
+        public static string GetOSPlatformName()
         {
             return Environment.OSVersion.Platform.ToString();
         }
@@ -53,7 +53,7 @@ namespace MilaTools
         /// <summary>
         /// Gets the OS full name (e.g., "Microsoft Windows 10 Pro").
         /// </summary>
-        public string GetOSFullName()
+        public static string GetOSFullName()
         {
             return GetCaptionFromWMI() ?? Environment.OSVersion.VersionString;
         }
@@ -61,7 +61,7 @@ namespace MilaTools
         /// <summary>
         /// Gets the OS short name (e.g., "Windows 10").
         /// </summary>
-        public string GetOSShortName()
+        public static string GetOSShortName()
         {
             string fullName = GetOSFullName();
             if (fullName.StartsWith("Microsoft "))
@@ -75,7 +75,7 @@ namespace MilaTools
         /// <summary>
         /// Gets the OS friendly version, e.g. "Windows 10 22H2" or "Windows 11 23H2".
         /// </summary>
-        public string GetOSFriendlyVersion()
+        public static string GetOSFriendlyVersion()
         {
             string productName = GetRegistryValue(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ProductName");
             string displayVersion = GetRegistryValue(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", "DisplayVersion");
@@ -92,7 +92,7 @@ namespace MilaTools
         }
 
         // Helper: Get OS caption from WMI
-        private string GetCaptionFromWMI()
+        private static string GetCaptionFromWMI()
         {
             try
             {
@@ -111,7 +111,7 @@ namespace MilaTools
         }
 
         // Helper: Get registry value as string
-        private string GetRegistryValue(string subKey, string valueName)
+        private static string GetRegistryValue(string subKey, string valueName)
         {
             try
             {

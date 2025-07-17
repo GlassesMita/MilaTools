@@ -13,7 +13,7 @@ namespace MilaTools
         /// </summary>
         /// <param name="linuxPath">The Linux-style path (e.g., ~/Desktop/file.txt or /tmp/test).</param>
         /// <returns>Windows-style path (e.g., C:\Users\Username\Desktop\file.txt).</returns>
-        public string Convert(string linuxPath)
+        public static string Convert(string linuxPath)
         {
             if (string.IsNullOrWhiteSpace(linuxPath))
                 throw new ArgumentException("Path must not be null or empty.");

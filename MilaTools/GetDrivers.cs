@@ -12,7 +12,7 @@ namespace MilaTools
         /// <summary>
         /// Gets the number of drives on the system.
         /// </summary>
-        public int GetDriveCount()
+        public static int GetDriveCount()
         {
             return DriveInfo.GetDrives().Length;
         }
@@ -20,7 +20,7 @@ namespace MilaTools
         /// <summary>
         /// Gets detailed information for all drives.
         /// </summary>
-        public List<DriveDetail> GetAllDriveDetails()
+        public static List<DriveDetail> GetAllDriveDetails()
         {
             var drives = new List<DriveDetail>();
             foreach (var drive in DriveInfo.GetDrives())
@@ -53,7 +53,7 @@ namespace MilaTools
         /// <summary>
         /// Gets the total storage capacity of all drives (bytes).
         /// </summary>
-        public long GetTotalStorage()
+        public static long GetTotalStorage()
         {
             long total = 0;
             foreach (var drive in DriveInfo.GetDrives())
@@ -67,7 +67,7 @@ namespace MilaTools
         /// <summary>
         /// Gets the total used space of all drives (bytes).
         /// </summary>
-        public long GetTotalUsed()
+        public static long GetTotalUsed()
         {
             long used = 0;
             foreach (var drive in DriveInfo.GetDrives())
@@ -81,7 +81,7 @@ namespace MilaTools
         /// <summary>
         /// Gets the total free space of all drives (bytes).
         /// </summary>
-        public long GetTotalFree()
+        public static long GetTotalFree()
         {
             long free = 0;
             foreach (var drive in DriveInfo.GetDrives())
@@ -97,7 +97,7 @@ namespace MilaTools
         /// </summary>
         /// <param name="driveLetter">Drive letter, e.g., "C" or "D".</param>
         /// <returns>Interface type string, or "Unknown" if not found.</returns>
-        public string GetDriveInterfaceType(string driveLetter)
+        public static string GetDriveInterfaceType(string driveLetter)
         {
             if (string.IsNullOrWhiteSpace(driveLetter))
                 return "Unknown";

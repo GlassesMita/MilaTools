@@ -7,7 +7,7 @@ namespace MilaTools
     /// </summary>
     public class DateTimeStamps
     {
-        public string GetCurrentTime(string format = null)
+        public static string GetCurrentTime(string format = null)
         {
             var now = DateTime.Now;
             if (string.IsNullOrEmpty(format))
@@ -15,7 +15,7 @@ namespace MilaTools
             return now.ToString(format, CultureInfo.CurrentCulture);
         }
 
-        public string GetUtcTime(string format = null)
+        public static string GetUtcTime(string format = null)
         {
             var utcNow = DateTime.UtcNow;
             if (string.IsNullOrEmpty(format))
@@ -23,7 +23,7 @@ namespace MilaTools
             return utcNow.ToString(format, CultureInfo.CurrentCulture);
         }
 
-        public string GetCurrentDate(string format = null)
+        public static string GetCurrentDate(string format = null)
         {
             var today = DateTime.Today;
             if (string.IsNullOrEmpty(format))
@@ -31,14 +31,14 @@ namespace MilaTools
             return today.ToString(format, CultureInfo.CurrentCulture);
         }
 
-        public long ToUnixTimestamp(DateTime? dateTime = null)
+        public static long ToUnixTimestamp(DateTime? dateTime = null)
         {
             var dt = dateTime ?? DateTime.Now;
             var unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             return (long)(dt.ToUniversalTime() - unixEpoch).TotalSeconds;
         }
 
-        public long ToUnixTimestampMilliseconds(DateTime? dateTime = null)
+        public static long ToUnixTimestampMilliseconds(DateTime? dateTime = null)
         {
             var dt = dateTime ?? DateTime.Now;
             var unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -51,7 +51,7 @@ namespace MilaTools
         /// <param name="destinationTimeZoneId">The time zone ID of the destination (e.g., "Pacific Standard Time").</param>
         /// <param name="format">Optional output format. If null, uses system default.</param>
         /// <returns>Time string in the destination time zone.</returns>
-        public string GetTimeInTimeZone(string destinationTimeZoneId, string format = null)
+        public static string GetTimeInTimeZone(string destinationTimeZoneId, string format = null)
         {
             var now = DateTime.Now;
             var destZone = TimeZoneInfo.FindSystemTimeZoneById(destinationTimeZoneId);
